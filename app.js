@@ -6,7 +6,7 @@
 
 // --- SUPABASE CONFIGURATION ---
 // Paste your project's credentials here to activate cloud database mode
-const SUPABASE_URL = "https://wlpngbfzlsuafcdvkszl.supabase.co";
+const SUPABASE_URL = "https://wrpngbrzlsdafcdvkszl.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndycG5nYnJ6bHNkYWZjZHZrc3psIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA0NzM2MjgsImV4cCI6MjA5NjA0OTYyOH0.Dz6Tf1xNdLBFUZAZ_HWWJQE26KIB0kJyMO4ioM3z-HA";
 
 let supabaseClient = null;
