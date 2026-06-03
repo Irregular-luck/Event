@@ -35,6 +35,7 @@ const DEFAULT_WINNERS = [
     uid: "8940-EV",
     eventName: "Batman Edition Design Contest",
     coordinator: "DR. HELENA WAYNE",
+    coordinator2: "MR. LUCIUS FOX",
     coordinatorDept: "IT",
     winners: [
       {
@@ -70,6 +71,7 @@ const DEFAULT_WINNERS = [
     uid: "4012-EV",
     eventName: "Metropolis Retro Poster Showcase",
     coordinator: "MS. SELINA KYLE",
+    coordinator2: "",
     coordinatorDept: "ADMIN",
     winners: [
       {
@@ -172,6 +174,7 @@ async function loadFromSupabase() {
         uid: item.uid,
         eventName: item.event_name,
         coordinator: item.coordinator,
+        coordinator2: item.coordinator_2 || "",
         coordinatorDept: item.coordinator_dept,
         winners: item.winners
       }));
@@ -192,6 +195,7 @@ async function saveToSupabase(event) {
           uid: event.uid,
           event_name: event.eventName,
           coordinator: event.coordinator,
+          coordinator_2: event.coordinator2 || "",
           coordinator_dept: event.coordinatorDept,
           winners: event.winners
         }
@@ -429,6 +433,7 @@ function setupFormSubmission() {
     // Gather event metadata
     const eventName = document.getElementById('event_name').value.trim();
     const coordName = document.getElementById('coord_name').value.trim();
+    const coordName2 = document.getElementById('coord_name_2').value.trim();
     const coordDept = document.getElementById('coord_dept').value.trim();
 
     winnerBlocks.forEach((block, idx) => {
@@ -467,6 +472,7 @@ function setupFormSubmission() {
       uid: generatedUid,
       eventName: eventName,
       coordinator: coordName.toUpperCase(),
+      coordinator2: coordName2.toUpperCase(),
       coordinatorDept: coordDept.substring(0, 5).toUpperCase(),
       winners: winnersArray
     };
@@ -570,10 +576,13 @@ function createEventCardElement(event) {
   // Card Header section
   const header = document.createElement('div');
   header.className = 'event-card-header';
+  const coordText = event.coordinator2 
+    ? `${event.coordinator} & ${event.coordinator2}` 
+    : event.coordinator;
   header.innerHTML = `
     <div class="event-card-header-left">
       <h2 class="event-card-title">${event.eventName}</h2>
-      <div class="event-card-coord">Coordinator: <span>${event.coordinator} / ${event.coordinatorDept}</span></div>
+      <div class="event-card-coord">Coordinator: <span>${coordText} / ${event.coordinatorDept}</span></div>
     </div>
     <div class="event-card-header-right">
       <span class="event-card-uid">UID: ${event.uid}</span>
