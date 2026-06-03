@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WinnerSubmit | Tactical Winner Registry & Submission Form</title>
+  
+  <!-- Material Symbols Outlined -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top HUD Navigation Bar -->
+  <header class="header-hud">
+    <div class="container">
+      <div class="brand">
+        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 28px;">security</span>
+        <span>WinnerSubmit</span>
+      </div>
+      
+      <!-- SPA Tabs -->
+      <nav class="nav-tabs">
+        <button id="tab-dashboard" class="tab-btn active" data-target="dashboard-section" type="button">Dashboard</button>
+        <button id="tab-form" class="tab-btn" data-target="form-section" type="button">Submit Poster</button>
+      </nav>
+      
+      <!-- Trailing Action -->
+      <div class="user-action">
+        <button class="user-profile-btn" type="button" aria-label="User Profile">
+          <span class="material-symbols-outlined" style="font-size: 28px;">account_circle</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="container">
+
+    <!-- TAB 1: WINNER DASHBOARD REGISTRY -->
+    <section id="dashboard-section" class="app-section active fade-in">
+      
+      <!-- Dashboard Header -->
+      <div class="hud-header">
+        <div class="hud-status">
+          <span class="hud-status-dot"></span>
+          <span class="hud-status-text">System Active // Data Feed</span>
+        </div>
+        <h1 class="hud-title">Winner Registry</h1>
+        <p class="hud-desc">View and manage authenticated poster design submissions. Select a winner card to inspect submission parameters.</p>
+      </div>
+
+      <!-- Search & Filters HUD Bar -->
+      <div class="hud-controls-row">
+        <div class="hud-search-filters">
+          <!-- Search Field -->
+          <div class="search-wrapper">
+            <span class="material-symbols-outlined">search</span>
+            <input type="text" id="search-input" placeholder="SEARCH ID OR NAME..." aria-label="Search by ID or name">
+          </div>
+          
+          <div class="hud-controls-divider"></div>
+          
+          <!-- Department Filter -->
+          <select id="filter-dept" class="filter-select" aria-label="Filter by department">
+            <option value="">DEPT: ALL</option>
+            <option value="cybersecurity">DEPT: CYBERSECURITY</option>
+            <option value="data science">DEPT: DATA SCIENCE</option>
+            <option value="mechanical eng">DEPT: MECHANICAL ENG</option>
+            <option value="computer science">DEPT: CS</option>
+            <option value="graphic design">DEPT: GRAPHIC DESIGN</option>
+          </select>
+          
+          <div class="hud-controls-divider"></div>
+          
+          <!-- Semester Filter -->
+          <select id="filter-sem" class="filter-select" aria-label="Filter by semester">
+            <option value="">SEM: ALL</option>
+            <option value="S1">S1</option>
+            <option value="S2">S2</option>
+            <option value="S3">S3</option>
+            <option value="S4">S4</option>
+            <option value="S5">S5</option>
+            <option value="S6">S6</option>
+            <option value="S7">S7</option>
+            <option value="S8">S8</option>
+          </select>
+          
+          <div class="hud-controls-divider"></div>
+          
+          <!-- Rank Filter -->
+          <select id="filter-rank" class="filter-select" aria-label="Filter by rank">
+            <option value="">RANK: ALL</option>
+            <option value="1st Place">1ST PLACE</option>
+            <option value="2nd Place">2ND PLACE</option>
+            <option value="3rd Place">3RD PLACE</option>
+            <option value="Honorable Mention">HONORABLE MENTION</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Bento-style Registry Grid (Event Cards) -->
+      <div id="winner-grid" class="bento-grid" style="grid-template-columns: 1fr;">
+        <!-- Dynamic event cards will be injected here by app.js -->
+      </div>
+    </section>
+
+    <!-- TAB 2: POSTER SUBMISSION FORM -->
+    <section id="form-section" class="app-section fade-in">
+      
+      <!-- Form Header -->
+      <div class="hud-header">
+        <div class="hud-status">
+          <span class="hud-status-dot"></span>
+          <span class="hud-status-text">Ready // Form Compiler</span>
+        </div>
+        <h1 class="hud-title">Poster Request Submission</h1>
+        <p class="hud-desc">Provide the necessary details for the coordinator and the winning design lead. Ensure all information is accurate before compilation.</p>
+      </div>
+
+      <form id="submission-form" autocomplete="off" class="fade-in">
+        <div class="form-layout-grid">
+          
+          <!-- Coordinator & Event Info Section -->
+          <section class="form-section-card">
+            <div class="accent-stripe"></div>
+            <div class="section-header-row">
+              <div class="icon-box">
+                <span class="material-symbols-outlined">badge</span>
+              </div>
+              <h2 class="section-title">Event & Coordinator Information</h2>
+            </div>
+            
+            <div class="inputs-row">
+              <div class="input-group col-span-2">
+                <label for="event_name">Event Name</label>
+                <input type="text" id="event_name" class="input-field" placeholder="e.g. Batman Edition Design Contest" required>
+              </div>
+
+              <div class="input-group col-span-2">
+                <label for="coord_name">Coordinator Full Name</label>
+                <input type="text" id="coord_name" class="input-field" placeholder="e.g. Dr. Helena Wayne" required>
+              </div>
+              
+              <div class="input-group">
+                <label for="coord_dept">Coordinator Department</label>
+                <input type="text" id="coord_dept" class="input-field" placeholder="e.g. Information Technology" required>
+              </div>
+              
+              <div class="input-group">
+                <label for="coord_semester">Coordinator Semester</label>
+                <select id="coord_semester" class="input-field" required>
+                  <option value="" disabled selected>Select Semester</option>
+                  <option value="S1">S1</option>
+                  <option value="S2">S2</option>
+                  <option value="S3">S3</option>
+                  <option value="S4">S4</option>
+                  <option value="S5">S5</option>
+                  <option value="S6">S6</option>
+                  <option value="S7">S7</option>
+                  <option value="S8">S8</option>
+                </select>
+              </div>
+              
+              <div class="input-group col-span-2">
+                <label for="coord_email">Coordinator Email ID</label>
+                <input type="email" id="coord_email" class="input-field" placeholder="h.wayne@university.edu" required>
+              </div>
+            </div>
+          </section>
+          
+          <!-- Winners Information Section (Host Dynamic Blocks) -->
+          <section class="form-section-card">
+            <div class="accent-stripe"></div>
+            <div class="section-header-row" style="justify-content: space-between; align-items: center; margin-bottom: 16px;">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="icon-box">
+                  <span class="material-symbols-outlined">emoji_events</span>
+                </div>
+                <h2 class="section-title">Winner Information</h2>
+              </div>
+              <!-- + Button to add more winners -->
+              <button type="button" id="add-winner-btn" class="add-winner-action-btn" style="color: var(--primary-accent); border: 1px solid var(--outline-variant); border-radius: var(--border-radius); padding: 4px 16px; height: 32px; font-size: 11px; display: flex; align-items: center; justify-content: center; font-weight: 700; background: none; cursor: pointer; font-family: var(--font-body); transition: opacity 0.2s;">
+                <span class="material-symbols-outlined" style="font-size: 18px; margin-right: 4px;">add</span> Add Winner
+              </button>
+            </div>
+            
+            <!-- Target container where winner forms will be injected -->
+            <div id="winners-container">
+              <!-- Re-injected dynamically by app.js -->
+            </div>
+          </section>
+        </div>
+
+        <!-- Form Submission Action Bar -->
+        <div class="form-action-bar">
+          <p class="form-info-tip">
+            <span class="material-symbols-outlined">info</span>
+            <span>Submitting will register all winners grouped together under this Event Name.</span>
+          </p>
+          
+          <button type="submit" class="submit-btn">
+            Compile & Submit
+            <span class="material-symbols-outlined">send</span>
+          </button>
+        </div>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- Toast Notification HUD -->
+  <div class="toast-container">
+    <div id="toast" class="toast">
+      <span class="material-symbols-outlined toast-icon">check_circle</span>
+      <span id="toast-message">Submission successfully compiled.</span>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer-hud">
+    <div class="container">
+      <div class="footer-info">
+        <span class="footer-info-brand">WinnerSubmit HUD</span>
+        <span class="footer-info-copyright">© 2026 Data Coordination Unit. For design assistance: lead@posterdesign.com</span>
+      </div>
+      <nav class="footer-nav">
+        <a href="#" class="footer-nav-link">Guidelines</a>
+        <a href="#" class="footer-nav-link">Support</a>
+        <a href="#" class="footer-nav-link">Privacy Protocol</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Supabase JS Client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <!-- Main JavaScript Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
